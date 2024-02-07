@@ -1,0 +1,19 @@
+.main-header {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__navbar {
+    ul {
+      display: flex;
+      gap: 1rem;
+
+      > li {
+        font-size: calc-rem(18);
+        list-style-type: none;
+      }
+    }
+  }
+}

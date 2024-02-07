@@ -1,7 +1,6 @@
 import type { ElementType, ComponentPropsWithoutRef } from 'react';
 import cn, { type Argument as CSSClassAttribute } from 'classnames';
 
-import '@/assets/sass/components/core/button.scss';
 
 type Props<C extends ElementType> = ComponentPropsWithoutRef<C> & {
   as?: C;
