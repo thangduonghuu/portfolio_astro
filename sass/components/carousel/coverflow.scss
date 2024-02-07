@@ -1,0 +1,63 @@
+.coverflow {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+
+  .swiper.swiper-initialized {
+    .swiper {
+      &-slide {
+        padding: 0 1rem 2rem;
+
+        &,
+        > * {
+          backface-visibility: hidden;
+        }
+
+        > * {
+          transition: all 0.4s linear;
+        }
+
+        &:not(&-active) {
+          > * {
+            transform: translate3d(0, 1.25rem, 0) scale(0.8);
+          }
+        }
+
+        &-prev > * {
+          transform: translate3d(-1.25rem, 0, 0) scale(0.8) !important;
+        }
+
+        &-next > * {
+          transform: translate3d(1.25rem, 0, 0) scale(0.8) !important;
+        }
+
+        // Fix flicker in Safari
+        @include supports-safari-only {
+          &-prev > *,
+          &-next > * {
+            transition: none;
+          }
+        }
+      }
+    }
+  }
+
+  .swiper:not(.swiper-initialized) {
+    height: 28rem;
+
+    .swiper {
+      &-wrapper {
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: flex;
+        gap: 1rem;
+      }
+
+      &-slide {
+        max-width: calc-rem(444);
+      }
+    }
+  }
+}

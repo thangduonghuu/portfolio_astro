@@ -1,0 +1,105 @@
+.section-hero {
+  $self: &;
+  position: relative;
+  @include dvh(100);
+
+  &__image {
+    display: block;
+    object-fit: cover;
+    @include fill-parent;
+  }
+
+  &__mask {
+    z-index: 1;
+    background: rgba($color-black, 0.2);
+    @include fill-parent;
+  }
+
+  &__container {
+    z-index: 2;
+    height: 100%;
+    position: relative;
+  }
+
+  &__content > * {
+    text-shadow: 0 0 0.25em rgba($color-black, 0.5);
+  }
+
+  &__text-spacer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &--room-details {
+    // position: sticky;
+    // top: 0;
+
+    #{$self}__content {
+      color: $color-white;
+      @include absolute($left: calc-rem(120), $bottom: calc-rem(50));
+
+      h1 {
+        white-space: nowrap;
+        font-size: calc-rem(90);
+      }
+
+      @include breakpoint(md) {
+        left: calc-rem(38);
+        bottom: calc-rem(46);
+      }
+
+      @include breakpoint(xs) {
+        left: calc-rem(16);
+        bottom: calc-rem(24);
+
+        h1 {
+          font-size: calc-rem(48);
+        }
+      }
+    }
+  }
+
+  &--collection {
+    #{$self}__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-white;
+    }
+
+    #{$self}__content {
+      max-width: 60%;
+      text-align: center;
+
+      @include breakpoint(xl) {
+        max-width: 80vw;
+      }
+
+      @include breakpoint(xs) {
+        max-width: 90vw;
+      }
+
+      h1 {
+        text-transform: uppercase;
+        white-space: nowrap;
+        text-align: center;
+        font-size: calc-rem(90);
+        line-height: 1;
+
+        @include breakpoint(xs) {
+          font-size: calc-rem(48);
+        }
+      }
+
+      &__text-sm {
+        font-size: calc-rem(31);
+        vertical-align: middle;
+
+        @include breakpoint(xs) {
+          font-size: calc-rem(26);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.accordion {
+  aspect-ratio: 1;
+
+  &__container {
+    display: flex;
+    overflow: hidden;
+    @include box(100%);
+  }
+
+  &__slide {
+    cursor: pointer;
+    position: relative;
+    // border: 5px solid red;
+    overflow: hidden;
+    @include box(100%);
+    transition: flex 0.75s ease;
+
+    &::after {
+      content: '';
+      background: rgba($color-black, 0.4);
+      @include fill-parent($z-index: 10);
+    }
+
+    &--active {
+      cursor: default;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &--horizontal & {
+    &__slide {
+      width: 5%;
+
+      &--active {
+        flex: 1;
+      }
+    }
+  }
+
+  &--vertical & {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__slide {
+      height: 8%;
+
+      &--active {
+        flex: 1;
+      }
+    }
+  }
+}

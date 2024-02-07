@@ -1,0 +1,135 @@
+.main-header {
+  background: linear-gradient(180deg, rgb(37, 37, 37) 0, rgba(138, 138, 138, 0) 100%);
+  z-index: $top-z-index;
+  color: $color-white;
+  position: fixed;
+  width: 100%;
+  max-width: map-get($breakpoints, xxl);
+
+  &__container {
+    animation: navbar 600ms ease-out;
+    gap: 3rem;
+    display: flex;
+    align-items: center;
+    height: calc-rem(90);
+    justify-content: space-between;
+  }
+
+  &__navbar {
+    width: 100%;
+
+    &__list {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 3rem;
+
+      &__text {
+        white-space: nowrap;
+        text-transform: uppercase;
+        font-size: calc-rem(16);
+        letter-spacing: calc-rem(3);
+
+        @include breakpoint(xs, min) {
+          & > .link:hover,
+          &--selected > .link {
+            text-decoration: underline;
+          }
+        }
+
+        @include breakpoint(xs) {
+          display: block;
+          font-size: calc-rem(20);
+          letter-spacing: calc-rem(1);
+          position: relative;
+          border-bottom: calc-rem(1) solid $color-white;
+
+          &::after {
+            background: transparent no-repeat 50% / contain;
+            display: block;
+            position: absolute;
+            pointer-events: none;
+            background-color: currentColor;
+            bottom: calc-rem(-8);
+            left: calc-rem(-16);
+            @include box-pseudo(calc-rem(16));
+            mask: url('/src/assets/icons/diamond-line.svg') no-repeat center / contain;
+          }
+        }
+      }
+    }
+
+    @include breakpoint(xs) {
+      display: none;
+
+      &--show {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 0;
+        @include dvh(100);
+        background-color: rgba(9, 9, 9, 0.35);
+        backdrop-filter: blur(calc-rem(10));
+      }
+
+      &__list {
+        transform: translateY(calc-rem(90));
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__logo,
+  &__toggle-button,
+  &__reserve-button {
+    z-index: 1;
+    display: block;
+  }
+
+  &__logo {
+    & > .icon {
+      @include box(calc-rem(32));
+    }
+
+    @include breakpoint(xs) {
+      @include center-parent(x);
+
+      & > .icon {
+        @include box(calc-rem(38));
+      }
+    }
+  }
+
+  &__toggle-button {
+    display: none;
+    cursor: pointer;
+    @include padding-x(0.75rem);
+
+    @include breakpoint(xs) {
+      display: block;
+    }
+  }
+
+  &__reserve-button {
+    @include breakpoint(xs) {
+      & > .button {
+        text-transform: none;
+        letter-spacing: calc-rem(0.5);
+        min-width: calc-rem(60);
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+@keyframes navbar {
+  0% {
+    transform: translateY(calc-rem(-90));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

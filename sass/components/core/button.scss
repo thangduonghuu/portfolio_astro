@@ -1,0 +1,241 @@
+.button {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  display: inline-block;
+  font-size: calc-rem(15);
+  font-family: $font-family-base;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: transparent;
+  letter-spacing: calc-rem(6);
+  min-width: calc-rem(200);
+  padding: calc-rem(16) calc-rem(18);
+
+  color: $color-brand-1;
+  border-color: currentColor;
+
+  @include breakpoint(xs) {
+    min-width: 8rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  span {
+    white-space: nowrap;
+    display: inline-block;
+    padding-left: calc-rem(6);
+  }
+
+  &::before,
+  &::after,
+  > span::before,
+  > span::after {
+    content: '';
+    display: block;
+    pointer-events: none;
+    transition: all 250ms ease;
+
+    border-color: currentColor;
+    background-color: currentColor;
+
+    @include breakpoint(xs) {
+      display: none;
+    }
+  }
+
+  &--light {
+    color: $color-white;
+  }
+
+  &--primary {
+    border-style: solid;
+    border-width: calc-rem(1);
+
+    &::before {
+      @include box(calc-rem(10));
+      @include center-parent(x, $bottom: calc-rem(-5));
+      mask: url('/src/assets/icons/diamond-solid.svg') no-repeat center;
+    }
+
+    &::after {
+      background-color: transparent;
+      border-top: solid calc-rem(0.5) transparent;
+      border-image: linear-gradient(
+          90deg,
+          currentColor calc(50% - calc-rem(18)),
+          transparent 0,
+          transparent calc(50% + calc-rem(18)),
+          currentColor 0
+        )
+        1;
+      @include box(calc(100% - 2rem), 0);
+      @include center-parent(x, $bottom: calc-rem(-10));
+    }
+
+    > span::before,
+    > span::after {
+      @include box(calc-rem(18));
+      @include center-parent(x, $bottom: calc-rem(-9));
+      mask: url('/src/assets/icons/diamond-line.svg') no-repeat center;
+    }
+
+    > span::before {
+      left: calc(50% - calc-rem(4.5));
+    }
+
+    > span::after {
+      left: calc(50% + calc-rem(4.5));
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+
+      &::after {
+        width: 0;
+      }
+
+      > span {
+        &::before,
+        &::after {
+          mask-image: url('/src/assets/icons/diamond-solid.svg');
+        }
+
+        &::before {
+          left: calc-rem(0);
+        }
+
+        &::after {
+          left: 100%;
+        }
+      }
+    }
+  }
+
+  &--secondary {
+    border-style: solid;
+    border-width: 0 calc-rem(1) calc-rem(1);
+
+    @include breakpoint(xs) {
+      border-width: calc-rem(1);
+    }
+
+    &::before {
+      @include box(calc-rem(18));
+      @include center-parent(x, $top: calc-rem(-9));
+      mask: url('/src/assets/icons/diamond-line.svg') no-repeat center;
+    }
+
+    &::after {
+      $mask-image: url('/src/assets/icons/diamond-line.svg');
+      @include box(calc-rem(24), calc-rem(10));
+      @include center-parent(x, $top: calc-rem(-5));
+      mask:
+        $mask-image no-repeat left center,
+        $mask-image no-repeat right center;
+    }
+
+    > span::before {
+      background-color: transparent;
+      border-top: solid calc-rem(0.5) transparent;
+      border-image: linear-gradient(
+          90deg,
+          currentColor calc(50% - calc-rem(12)),
+          transparent 0,
+          transparent calc(50% + calc-rem(12)),
+          currentColor 0
+        )
+        1;
+      @include box(100%, 0);
+      @include center-parent(x, $top: 0);
+    }
+
+    > span::after {
+      @include box(calc(100% - 2rem), calc-rem(1));
+      @include center-parent(x, $bottom: calc-rem(-10));
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+
+      &::after {
+        width: calc(100% + calc-rem(10));
+        $mask-image: url('/src/assets/icons/diamond-solid.svg');
+        mask-image: $mask-image, $mask-image;
+      }
+
+      > span::before {
+        border-image: none;
+        border-top-color: currentColor;
+      }
+
+      > span::after {
+        width: 0;
+      }
+    }
+  }
+
+  &--tertiary {
+    border: 0 none;
+    text-align: left;
+
+    @keyframes button-tertiary {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+
+    @include breakpoint(xs) {
+      border: calc-rem(1) solid;
+    }
+
+    @include breakpoint(xs, min) {
+      @include padding-x(0, calc-rem(24));
+    }
+
+    &::before,
+    &:after {
+      transform-origin: left center;
+      @include absolute($left: 0, $bottom: 0);
+    }
+
+    &::before {
+      @include box(100%, calc-rem(1));
+    }
+
+    &::after {
+      @include box(100%, calc-rem(9));
+      mask: url('/src/assets/icons/arrow.svg') no-repeat right bottom / contain;
+    }
+
+    > span {
+      padding-left: 0;
+
+      &::before {
+        display: none;
+      }
+
+      &:after {
+        opacity: 0.3;
+        @include box(calc-rem(32));
+        @include absolute($right: calc-rem(-10), $bottom: calc-rem(-14));
+        mask: url('/src/assets/icons/diamond-solid.svg') no-repeat center;
+      }
+    }
+
+    &:hover {
+      &::before,
+      &::after {
+        animation: button-tertiary 250ms ease;
+      }
+    }
+  }
+}

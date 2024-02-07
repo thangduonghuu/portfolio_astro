@@ -1,0 +1,81 @@
+.regular-slider {
+  position: relative;
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    @include center-parent(x, $bottom: 3rem);
+
+    @include breakpoint(xs) {
+      bottom: 1.5rem;
+    }
+  }
+
+  &__button {
+    width: 3rem;
+    height: 0.75rem;
+    cursor: pointer;
+    color: $color-white;
+    border-bottom: calc-rem(2) solid currentColor;
+
+    &::after {
+      display: block;
+      margin-top: 1px;
+      background-color: currentColor;
+      @include box-pseudo(100%);
+      mask: url('/src/assets/icons/arrow.svg') no-repeat right bottom / contain;
+    }
+
+    &--prev {
+      &::after {
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  &__pagination {
+    width: auto;
+    gap: 0.75rem;
+    display: flex;
+    max-height: 90%;
+    overflow: hidden;
+    flex-direction: column;
+    @include center-parent(y, $left: 2rem);
+
+    @include breakpoint(xs) {
+      gap: 0.5rem;
+      left: 1rem;
+    }
+  }
+
+  &__bullet {
+    display: block;
+    flex-shrink: 0;
+    cursor: pointer;
+    @include box(0.6rem);
+    background-color: $color-white;
+    mask: url('/src/assets/icons/diamond-line.svg') no-repeat center / contain;
+
+    &--active {
+      mask-image: url('/src/assets/icons/diamond-solid.svg');
+    }
+
+    @include breakpoint(xs) {
+      @include box(0.6rem);
+    }
+  }
+
+  .swiper:not(.swiper-initialized) {
+    .swiper {
+      &-slide {
+        display: none;
+
+        &:first-of-type {
+          display: block;
+        }
+      }
+    }
+  }
+}
