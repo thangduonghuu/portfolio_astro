@@ -1,19 +1,28 @@
 .main-header {
   &__container {
+    position: absolute;
     display: flex;
+    width: 100vw; 
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
   }
 
-  &__navbar {
-    ul {
+  &__icon {
+    width: 60px;
+    height: 40px;
+  }
+
+  .navbar {
+    &__list {
       display: flex;
       gap: 1rem;
+    }
 
-      > li {
-        font-size: calc-rem(18);
-        list-style-type: none;
-      }
+    &__item {
+      font-size: calc-rem(21);
+      cursor: pointer;
+      list-style-type: none;
     }
   }
 }

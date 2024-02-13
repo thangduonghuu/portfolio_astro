@@ -9,14 +9,14 @@ export default function Header() {
     <header className="main-header">
       <Container className="main-header__container">
         <Link>
-          <Icon name="logo" size="large" />
+          <Icon name="logo" size="large" className="main-header__icon" />
         </Link>
         <nav className="main-header__navbar">
-          <ul>
-            <li>About</li>
-            <li>Works</li>
-            <li>Services</li>
-            <li>Contact</li>
+          <ul className="navbar__list">
+            <li className="navbar__item">About</li>
+            <li className="navbar__item">Works</li>
+            <li className="navbar__item">Services</li>
+            <li className="navbar__item">Contact</li>
           </ul>
         </nav>
 
