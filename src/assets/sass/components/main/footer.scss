@@ -1,0 +1,79 @@
+.main-footer {
+  background-color: #ffefe4;
+  height: 50dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__container {
+    display: flex;
+
+    h1 {
+      color: $color-purple;
+      text-transform: uppercase;
+      max-width: calc-rem(550);
+    }
+    h2 {
+      font-size: calc-rem(40);
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: normal;
+      max-width: calc-rem(550);
+    }
+
+    p {
+      max-width: calc-rem(550);
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-left: calc-rem(100);
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__form {
+    flex: 1;
+
+    &__container {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-areas: 'name surname' 'email email' 'message message';
+    }
+
+    &__field {
+      &--name {
+        grid-area: name;
+      }
+      &--email {
+        grid-area: email;
+      }
+      &--surname {
+        grid-area: surname;
+      }
+      &--message {
+        grid-area: message;
+      }
+
+      &--button {
+        display: flex;
+        gap: 1.5rem;
+
+        > button {
+          padding: calc-rem(10) calc-rem(24);
+          font-size: calc-rem(18);
+        }
+      }
+    }
+  }
+
+  &__social-media {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+}

@@ -1,6 +1,7 @@
 ---
-import Header from '@/components/Header';
-import '@/assets/sass/layouts/default.scss'
+import Header from '@/components/section/Header';
+import Footer from '@/components/section/Footer.astro';
+import '@/assets/sass/layouts/default.scss';
 ---
 
 <!doctype html>
@@ -15,5 +16,6 @@ import '@/assets/sass/layouts/default.scss'
     <main>
       <slot />
     </main>
+    <Footer />
   </body>
 </html>

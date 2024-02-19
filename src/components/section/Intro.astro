@@ -3,6 +3,7 @@ import Container from '@/components/core/Container';
 
 import '@/assets/sass/components/section/intro.scss';
 import profileImage from '@/assets/images/profile-image.png';
+import { Image } from 'astro:assets';
 ---
 
 <section class="section-intro">
@@ -32,6 +33,13 @@ import profileImage from '@/assets/images/profile-image.png';
         <div class="section-intro__experience__box"></div>
       </div>
     </div>
-    <div class="section-intro__image"></div>
+    <div class="section-intro__image">
+      <Image
+        src={profileImage}
+        width={profileImage.width / 2}
+        height={profileImage.height / 2}
+        alt="hero-section-1"
+      />
+    </div>
   </Container>
 </section>

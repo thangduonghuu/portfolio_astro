@@ -1,7 +1,7 @@
-import Button from './core/Button';
-import Container from './core/Container';
-import Icon from './core/Icon';
-import Link from './core/Link';
+import Button from '../core/Button';
+import Container from '../core/Container';
+import Icon from '../core/Icon';
+import Link from '../core/Link';
 import '@/assets/sass/components/main/header.scss';
 
 export default function Header() {

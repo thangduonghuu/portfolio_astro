@@ -17,13 +17,12 @@ export default <C extends ElementType>({
   children,
   ...attrs
 }: Props<C>) => {
-  const Component = as || 'button';
   return (
-    <Component
+    <button
       {...attrs}
       className={cn(['button', `button--${variant}`, { 'button--light': light }, className])}
     >
       <span>{children}</span>
-    </Component>
+    </button>
   );
 };
