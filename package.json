@@ -7,6 +7,7 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "build:dev": "npx rimraf dist && astro check && astro build",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
     "preview": "astro preview",
     "astro": "astro"
   },
