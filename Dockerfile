@@ -1,12 +1,11 @@
-FROM node:18.18.2-alpine3.18 as builder
-RUN corepack enable && corepack prepare pnpm@8.10.2 --activate
+FROM node:lts AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-# FROM node:18
-WORKDIR /var/www/html
-ADD . .
-RUN pnpm install
-RUN pnpm build
-
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /var/www/html/dist /usr/share/nginx/html
+FROM nginx:alpine AS runtime
+COPY ./nginx.conf /etc/nginx.conf
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 8080
