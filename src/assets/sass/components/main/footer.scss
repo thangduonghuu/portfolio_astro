@@ -5,6 +5,11 @@
   flex-direction: column;
   justify-content: space-between;
 
+  @include breakpoint(xs) {
+    height: 100%;
+    gap: calc-rem(60);
+  }
+
   &__container {
     display: flex;
 
@@ -19,10 +24,22 @@
       text-transform: uppercase;
       line-height: normal;
       max-width: calc-rem(550);
+
+      @include breakpoint(xs) {
+        font-size: calc-rem(32);
+      }
     }
 
     p {
       max-width: calc-rem(550);
+
+      @include breakpoint(xs) {
+        font-size: calc-rem(14);
+      }
+    }
+
+    @include breakpoint(xs) {
+      flex-direction: column;
     }
   }
 
@@ -33,6 +50,11 @@
     padding-left: calc-rem(100);
     justify-content: center;
     gap: 1rem;
+
+    @include breakpoint(xs) {
+      padding-left: 0;
+      margin-bottom: calc-rem(20);
+    }
   }
 
   &__form {
@@ -41,7 +63,7 @@
     &__container {
       display: grid;
       gap: 1.5rem;
-      grid-template-areas: 'name surname' 'email email' 'message message';
+      grid-template-areas: 'name surname' 'email email' 'message message' 'button button';
     }
 
     &__field {
@@ -59,12 +81,18 @@
       }
 
       &--button {
+        grid-area: button;
         display: flex;
         gap: 1.5rem;
 
         > button {
           padding: calc-rem(10) calc-rem(24);
           font-size: calc-rem(18);
+        }
+
+        @include breakpoint(xs) {
+          font-size: calc-rem(14);
+          flex-direction: column;
         }
       }
     }

@@ -4,6 +4,12 @@
   z-index: 2;
   position: relative;
 
+  @include breakpoint(xs) {
+    height: 100%;
+    padding-top: calc-rem(120);
+    padding-bottom: calc-rem(120);
+  }
+
   &__container {
     height: 100%;
     display: flex;
@@ -26,6 +32,10 @@
     margin-top: 1rem;
     display: flex;
     gap: 3rem;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+    }
   }
 
   &__image {
@@ -33,12 +43,12 @@
     z-index: -1;
 
     &--left {
-      top: 30%;
-      left: 0;
+      top: 60%;
+      left: -40%;
     }
     &--right {
-      top: 20%;
-      right: 10%;
+      top: 30%;
+      right: -17%;
     }
   }
 
