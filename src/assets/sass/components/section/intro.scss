@@ -6,6 +6,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+    }
   }
 
   &__image {
@@ -16,12 +20,12 @@
       content: '';
       display: block;
       background: url('/src/assets/images/intro-image-2.png');
-      bottom: -50%;
-      right: -50%;
+      bottom: -5%;
+      right: -5%;
       background-repeat: no-repeat;
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 50%;
+      height: 60%;
     }
   }
 

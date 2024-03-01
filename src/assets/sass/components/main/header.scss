@@ -1,11 +1,46 @@
 .main-header {
+  position: relative;
+
+  &__logo {
+    @include breakpoint(xs) {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      background-color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 0 0 calc-rem(30) calc-rem(30);
+    }
+  }
+
   &__container {
-    position: absolute;
+    position: fixed;
     display: flex;
-    width: 100vw; 
+    width: 100vw;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
     padding: 1rem 2rem;
+    background-color: #fff;
+
+    @include breakpoint(xs) {
+      padding: 0;
+    }
+  }
+
+  .close-icon {
+    display: none;
+
+    @include breakpoint(xs) {
+      display: block;
+
+      &--hide {
+        display: none;
+      }
+
+      &--show {
+        display: block;
+      }
+    }
   }
 
   &__icon {
@@ -13,16 +48,76 @@
     height: 40px;
   }
 
-  .navbar {
-    &__list {
+  &__button {
+    @include breakpoint(xs) {
+      display: none;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      justify-content: center;
+      transform: translateY(calc-rem(350));
+
+      &--show {
+        display: flex;
+
+        .button {
+          width: calc-rem(350);
+        }
+      }
+
+      &--hide {
+        display: none;
+      }
+    }
+  }
+
+  &__navbar {
+    $self: &;
+
+    .navbar__list {
       display: flex;
       gap: 1rem;
     }
 
-    &__item {
+    .navbar__item {
       font-size: calc-rem(21);
       cursor: pointer;
       list-style-type: none;
+    }
+
+    @include breakpoint(xs) {
+      display: none;
+
+      &--mobile {
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        justify-content: center;
+        backdrop-filter: blur(calc-rem(10));
+
+        .navbar__list {
+          display: flex;
+          width: 100%;
+          gap: 1rem;
+          align-items: center;
+          padding-top: calc-rem(120);
+          flex-direction: column;
+          border-radius: 0 0 calc-rem(30) calc-rem(30);
+          height: 70%;
+          background-color: $color-menu-mobile;
+        }
+
+        .navbar__list {
+          font-size: calc-rem(21);
+          cursor: pointer;
+          list-style-type: none;
+        }
+      }
     }
   }
 }
