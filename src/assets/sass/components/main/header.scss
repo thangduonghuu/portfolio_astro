@@ -13,7 +13,6 @@
   }
 
   &__container {
-    position: fixed;
     display: flex;
     width: 100vw;
     justify-content: space-between;
@@ -24,6 +23,7 @@
 
     @include breakpoint(xs) {
       padding: 0;
+      position: fixed;
     }
   }
 
