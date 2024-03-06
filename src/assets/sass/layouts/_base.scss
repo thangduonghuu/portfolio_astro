@@ -15,6 +15,12 @@ button[disabled] {
   cursor: not-allowed;
 }
 
+.remove_mobile_size {
+  @include breakpoint(xs) {
+    display: none;
+  }
+}
+
 :root {
   font-size: $font-size-base;
 

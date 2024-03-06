@@ -4,9 +4,14 @@
   flex-direction: column;
   @include dvh(100);
 
+  @include breakpoint(xs) {
+    height: 100%;
+    gap: 5rem;
+  }
+
   &__container {
     padding-top: calc-rem(80);
-    
+
     @include breakpoint(xs) {
       padding-top: calc-rem(120);
     }
