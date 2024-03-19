@@ -24,6 +24,7 @@ pipeline {
                 steps {
                     sh 'rm -rf /var/www/portfolio/html/*'
                     sh 'cp -r dist/* /var/www/portfolio/html/'
+                    sh 'sudo /usr/sbin/nginx -s reload'
                 }
             }
     }
